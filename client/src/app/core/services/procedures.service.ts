@@ -15,6 +15,8 @@ export class ProceduresService {
     }
 
     getById(id: string): Observable<Procedure | undefined> {
-        return this.getAll().pipe(map(list => list.find(p => p.id === id)));
+        return this.http
+            .get<Procedure[]>('/assets/procedures.json')
+            .pipe(map(list => list.find(p => p.id === id)));
     }
 }
