@@ -14,7 +14,7 @@ export interface Procedure {
     drapes?: Item[];
     instruments?: Item[];
     supplies?: Item[];
-    medication?: Item[];
+    medications?: Item[];
     sutures?: Item[];
     dressings?: Item[];
     notes?: string[];

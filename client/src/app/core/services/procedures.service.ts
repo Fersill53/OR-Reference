@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -15,8 +15,28 @@ export class ProceduresService {
     }
 
     getById(id: string): Observable<Procedure | undefined> {
-        return this.http
-            .get<Procedure[]>('/assets/procedures.json')
-            .pipe(map(list => list.find(p => p.id === id)));
+        return this.getAll().pipe(map((list: Procedure[]) => list.find((p: Procedure) => p.id === id))
+    );
     }
+} */
+
+// src/app/core/services/procedures.service.ts
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
+import { Procedure } from '../models/procedure.model';
+
+@Injectable({ providedIn: 'root' })
+export class ProceduresService {
+  constructor(private http: HttpClient) {}
+
+  getAll(): Observable<Procedure[]> {
+    return this.http.get<Procedure[]>('/assets/procedures.json');
+  }
+
+  getById(id: string): Observable<Procedure | undefined> {
+    return this.getAll().pipe(
+      map((list: Procedure[]) => list.find((p: Procedure) => p.id === id))
+    );
+  }
 }

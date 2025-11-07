@@ -1,0 +1,9 @@
+.page { padding: 1rem; }
+.page_header { display: flex; gap: 1rem; align-items: center; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 1rem; margin: 1rem 0; padding: 0; list-style: none; }
+.card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 1rem; background: #fff; }
+.sub { color: #6b7280; margin: .25rem 0 .5rem; }
+.tags { display: flex; flex-wrap: wrap; gap: .5rem; margin: .5rem 0 1 rem;}
+.tag { padding: .25rem .5rem; border-radius: 999px; background: #f3f4f6; font-size: .8rem; }
+.btn { display: inline-block; padding: .5rem .75rem; border-radius: 8px; border: 1px solid #d1d5db; text-decoration: none; }
+input[type="search"] { flex:1; padding: .5rem .75rem; border-radius: 8px; border: 1px solid #d1d5db; }

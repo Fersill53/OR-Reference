@@ -1,0 +1,22 @@
+<section class="page">
+    <header class="page_header">
+        <h1>Procedures</h1>
+        <input
+            type="search"
+            placeholder="Search name, service, tags..."
+            [(ngModel)]="q"
+            (ngModelChange)="onQuery($event)"
+        />
+    </header>
+
+    <ul class="cards">
+        <li *ngFor="let p of (filtered$ | async)!" class="card">
+            <h3>{{ p.name }}</h3>
+            <p class="sub">{{ p.service }} * {{ p.position || '-' }}</p>
+            <div class="tags">
+                <span class="tag" *ngFor="let t of p.tags">{{ t }}</span>
+            </div>
+            <a [routerLink]="['/procedures', p.id]" class="btn">View setup</a>
+        </li>
+    </ul>
+</section>

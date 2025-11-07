@@ -1,0 +1,47 @@
+<section class="page" *ngIf="(procedure$ | async) as p">
+  <a routerLink="/procedures" class="back">← Back</a>
+  <h1>{{ p.name }}</h1>
+  <p class="sub">{{ p.service }} • {{ p.position || '—' }} • {{ p.anesthesia || '—' }}</p>
+
+  <div class="grid">
+    <div class="panel" *ngIf="p.roomSetup?.length">
+      <h3>Room Setup</h3>
+      <ul><li *ngFor="let r of p.roomSetup">{{ r }}</li></ul>
+    </div>
+
+    <div class="panel" *ngIf="p.drapes?.length">
+      <h3>Drapes</h3>
+      <ul><li *ngFor="let i of p.drapes">{{ i.name }} <small *ngIf="i.notes">— {{ i.notes }}</small></li></ul>
+    </div>
+
+    <div class="panel" *ngIf="p.instruments?.length">
+      <h3>Instruments</h3>
+      <ul><li *ngFor="let i of p.instruments">{{ i.name }} <small *ngIf="i.qty">×{{ i.qty }}</small> <small *ngIf="i.notes">— {{ i.notes }}</small></li></ul>
+    </div>
+
+    <div class="panel" *ngIf="p.supplies?.length">
+      <h3>Supplies</h3>
+      <ul><li *ngFor="let s of p.supplies">{{ s.name }} <small *ngIf="s.qty">×{{ s.qty }}</small></li></ul>
+    </div>
+
+    <div class="panel" *ngIf="p.medications?.length">
+      <h3>Medications</h3>
+      <ul><li *ngFor="let m of p.medications">{{ m.name }} <small *ngIf="m.notes">— {{ m.notes }}</small></li></ul>
+    </div>
+
+    <div class="panel" *ngIf="p.sutures?.length">
+      <h3>Sutures</h3>
+      <ul><li *ngFor="let s of p.sutures">{{ s.name }}</li></ul>
+    </div>
+
+    <div class="panel" *ngIf="p.dressings?.length">
+      <h3>Dressings</h3>
+      <ul><li *ngFor="let d of p.dressings">{{ d.name }}</li></ul>
+    </div>
+
+    <div class="panel" *ngIf="p.notes?.length">
+      <h3>Notes</h3>
+      <ul><li *ngFor="let n of p.notes">{{ n }}</li></ul>
+    </div>
+  </div>
+</section>
